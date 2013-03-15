@@ -15,7 +15,7 @@ class Installer implements Plugin\InterfaceInstaller
             $directionComposer->writeClassDeclaration(
                 $pair[0],
                 $pair[1],
-                'new Plugin\\Imagemagick\\Converter',
+                'new Plugin\\Imagemagick\\Converter(ContentType::byExtention("'.$pair[0]->standardExtension().'"))',
                 'new Plugin\\Imagemagick\\Command'
             );
         }
@@ -37,6 +37,9 @@ class Installer implements Plugin\InterfaceInstaller
             array(ContentType::png(), \Barberry\ContentType::jpeg()),
             array(ContentType::png(), \Barberry\ContentType::gif()),
             array(ContentType::png(), \Barberry\ContentType::png()),
+            array(ContentType::pdf(), \Barberry\ContentType::jpeg()),
+            array(ContentType::pdf(), \Barberry\ContentType::png()),
+            array(ContentType::pdf(), \Barberry\ContentType::gif()),
         );
     }
 }
